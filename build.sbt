@@ -5,22 +5,18 @@ lazy val root = Project(
   base = file("."),
   settings = Seq(
     name := "Fun with Type Classes",
-    libraryDependencies += scalaTest % Test
-  ) ++ inThisBuild(List(
-    organization := "com.naumanbadar",
-    scalaVersion := "2.12.3",
-    version := "0.1.0-SNAPSHOT"
-  ))
-)
-/*
-lazy val root = (project in file(".")).
-  settings(
-    inThisBuild(List(
-      organization := "com.example",
+    libraryDependencies ++= Seq(
+      scalaTest % Test,
+      cats
+    ),
+    scalacOptions ++= Seq(
+      "-Xfatal-warnings",
+      "-Ypartial-unification"
+    )
+  ) ++ inThisBuild(
+    List(
+      organization := "com.naumanbadar",
       scalaVersion := "2.12.3",
-      version := "0.1.0-SNAPSHOT"
-    )),
-    name := "Fun with Type Classes",
-    libraryDependencies += scalaTest % Test
-  )
-*/
+      version := "1.0-SNAPSHOT"
+    ))
+)
